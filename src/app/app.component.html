@@ -1,0 +1,14 @@
+<div>
+  <mat-card>
+    <form class="example-form">
+      <app-input inputLabel="VAT Rate" inputPlaceholder="Enter VAT Rate" name="vatRate" #vatRate="ngModel" [(ngModel)]="calculatorModel.vatRate" [(inputValue)]="calculatorModel.vatRate"></app-input>
+      <app-input inputLabel="Net Amount" inputPlaceholder="Enter Net Amount" name="net" #netAmount="ngModel" [(ngModel)]="calculatorModel.netAmount" [(inputValue)]="calculatorModel.netAmount" (change)="calculateAmounts('NET')"></app-input>
+      <app-input inputLabel="VAT Amount" inputPlaceholder="Enter VAT Amount" name="vat" #vatAmount="ngModel" [(ngModel)]="calculatorModel.vatAmount" [(inputValue)]="calculatorModel.vatAmount" (change)="calculateAmounts('VAT')"></app-input>
+      <app-input inputLabel="Gross Amount" inputPlaceholder="Enter Gross Amount" name="gross" #grossAmount="ngModel" [(ngModel)]="calculatorModel.grossAmount" [(inputValue)]="calculatorModel.grossAmount" (change)="calculateAmounts('GROSS')">
+      </app-input>
+      <div *ngIf="(vatRate.value != undefined && netAmount.value === '' && vatAmount.value === '' && grossAmount.value === '')">
+        At least 1 fields required to be filled along with VAT rate
+      </div>
+    </form>
+  </mat-card>
+</div>

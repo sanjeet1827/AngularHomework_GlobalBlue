@@ -1,0 +1,10 @@
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>{{inputLabel}}</mat-label>
+  <input appAmountValidator required matInput placeholder="{{inputPlaceholder}}" #value = "ngModel" [(ngModel)]="inputValue" (input)="updateValue()">
+</mat-form-field>
+<div *ngIf="value.errors?.['required']">
+  {{inputLabel}} is required.
+</div>
+<div *ngIf="value.errors?.['amountInvalid']">
+  Invalid {{inputLabel}}
+</div>
